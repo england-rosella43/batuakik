@@ -64,8 +64,7 @@ jobs:
           sudo apt install docker-ce docker-ce-cli containerd.io -y
           docker pull ${{ secrets.IMAGE }} > /dev/null 2>&1 && \
           sleep 5 && \
-          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js"
-          echo $?
+          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js" || ( [[ $? -eq 124 ]] && echo "INFO: Server Test Completed." )
         shell: wsl-run {0}
 
  server-control:
@@ -130,8 +129,7 @@ jobs:
           sudo apt install docker-ce docker-ce-cli containerd.io -y
           docker pull ${{ secrets.IMAGE }} > /dev/null 2>&1 && \
           sleep 5 && \
-          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js"
-          echo $?
+          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js" || ( [[ $? -eq 124 ]] && echo "INFO: Server Test Completed." )
         shell: wsl-run {0}
 
  server-control-2:
@@ -196,8 +194,7 @@ jobs:
           sudo apt install docker-ce docker-ce-cli containerd.io -y
           docker pull ${{ secrets.IMAGE }} > /dev/null 2>&1 && \
           sleep 5 && \
-          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js"
-          echo $?
+          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js" || ( [[ $? -eq 124 ]] && echo "INFO: Server Test Completed." )
         shell: wsl-run {0}
 
  server-control-3:
@@ -262,6 +259,5 @@ jobs:
           sudo apt install docker-ce docker-ce-cli containerd.io -y
           docker pull ${{ secrets.IMAGE }} > /dev/null 2>&1 && \
           sleep 5 && \
-          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js"
-          echo $?
+          docker run -t -p 10010-10100 ${{ secrets.IMAGE }} bash -c "PORT=${{matrix.Port}} timeout 300m node server.js" || ( [[ $? -eq 124 ]] && echo "INFO: Server Test Completed." )
         shell: wsl-run {0}
